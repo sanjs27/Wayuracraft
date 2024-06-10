@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
-
 import Login from './pages/Login';
 import Register from './pages/Register';
-import api from './services/api';
+//import api from './services/api';
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
