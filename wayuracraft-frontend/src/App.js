@@ -1,27 +1,48 @@
 import React, { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import ContainerPrincipal from './components/ContainerPrincipal';
+import Header from './components/Header';
 import Login from './pages/Login';
 import Register from './pages/Register';
-//import api from './services/api';
+import Perfil from './pages/Perfil';
+import Productos from './pages/Productos';
+import api from './services/api';
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
-      setIsLoggedIn(true);
+      api.get('/users/me', { headers: { Authorization: `Bearer ${token}` } })
+        .then(response => {
+          setIsLoggedIn(true);
+          setUser(response.data);
+        })
+        .catch(error => {
+          console.error('Error fetching user:', error);
+        });
     }
   }, []);
 
+  const handleLogin = (userData) => {
+    setIsLoggedIn(true);
+    setUser(userData);
+  };
+
   return (
-    <Routes>
-      <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Register />} />
-      <Route path="/" element={isLoggedIn ? <h1>Welcome</h1> : <Login />} />
-    </Routes>
+    <>
+      <Header isLoggedIn={isLoggedIn} user={user} />
+      <Routes>
+        <Route path="/" element={<ContainerPrincipal />} />
+        <Route path="/login" element={<Login onLogin={handleLogin} />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/perfil" element={<Perfil />} />
+        <Route path="/productos" element={<Productos />} />
+      </Routes>
+    </>
   );
 };
 
 export default App;
-

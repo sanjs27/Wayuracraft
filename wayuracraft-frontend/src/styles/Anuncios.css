@@ -1,0 +1,27 @@
+.anuncios {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffe4c4;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .anuncios img {
+    max-width: 100px;
+    margin-right: 20px;
+  }
+  
+  .anuncios-text {
+    max-width: 500px;
+  }
+  
+  .anuncios-text h2 {
+    margin: 0;
+    color: #8B4513;
+  }
+  
+  .anuncios-text p {
+    margin: 0;
+  }
+  
