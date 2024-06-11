@@ -1,7 +1,7 @@
 import React from 'react';
 import "../styles/ContainerPrincipal.css";
-// import Login from '../pages/Login';
 import Anuncios from './Anuncios';
+import Productos from '../pages/Productos';
 
 const ContainerPrincipal = () => {
   return (
@@ -9,15 +9,12 @@ const ContainerPrincipal = () => {
       <h1>Welcome to WayuuCraft</h1>
       <Anuncios />
       <p>Explore our collection of Wayuu artisan products.</p>
-
-      <div className="products-preview">
-        {/* Aquí puedes agregar una vista previa de productos o cualquier otro contenido relevante */}
-      </div>
+      <Productos />
     </div>
   );
 };
 
-
+export default ContainerPrincipal;
 
 // const ContainerPrincipal = ({ isLoggedIn }) => {
 //   return (
@@ -40,6 +37,6 @@ const ContainerPrincipal = () => {
 //   );
 // };
 
-export default ContainerPrincipal;
+// export default ContainerPrincipal;
 
 

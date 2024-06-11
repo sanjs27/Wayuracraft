@@ -1,4 +1,4 @@
-import Personalizacion from '../models/Personalizacion.js';
+import Personalizacion from '../models/Personalizaciones.js';
 
 export const getPersonalizaciones = async (req, res) => {
   try {

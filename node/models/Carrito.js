@@ -1,6 +1,6 @@
 import { DataTypes } from 'sequelize';
 import sequelize from '../config/database.js';
-import Usuario from './Usuario.js';
+import User from './User.js';
 
 const Carrito = sequelize.define('Carrito', {
   id_carrito: {
@@ -12,7 +12,7 @@ const Carrito = sequelize.define('Carrito', {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
-      model: Usuario,
+      model: User,
       key: 'id_usuario'
     }
   },

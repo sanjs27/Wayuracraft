@@ -1,5 +1,5 @@
 import Carrito from '../models/Carrito.js';
-import DetalleCarrito from '../models/DetalleCarrito.js';
+import DetalleCarrito from '../models/Detalle_Carrito.js';
 
 export const getCarrito = async (req, res) => {
   try {

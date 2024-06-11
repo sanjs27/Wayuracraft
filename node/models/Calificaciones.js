@@ -1,7 +1,7 @@
 import { DataTypes } from 'sequelize';
 import sequelize from '../config/database.js';
-import Producto from './Producto.js';
-import Usuario from './Usuario.js';
+import Producto from './Productos.js';
+import User from './User.js';
 
 const Calificacion = sequelize.define('Calificacion', {
   id_calificacion: {
@@ -21,7 +21,7 @@ const Calificacion = sequelize.define('Calificacion', {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
-      model: Usuario,
+      model: User,
       key: 'id_usuario'
     }
   },
@@ -37,3 +37,4 @@ const Calificacion = sequelize.define('Calificacion', {
 });
 
 export default Calificacion;
+

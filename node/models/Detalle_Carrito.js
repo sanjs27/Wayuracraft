@@ -1,7 +1,7 @@
 import { DataTypes } from 'sequelize';
 import sequelize from '../config/database.js';
 import Carrito from './Carrito.js';
-import Producto from './Producto.js';
+import Producto from './Productos.js';
 
 const DetalleCarrito = sequelize.define('DetalleCarrito', {
   id_detalle_carrito: {

@@ -11,6 +11,7 @@ import personalizacionRoutes from './routes/personalizacionRoutes.js';
 import reporteRoutes from './routes/reporteRoutes.js';
 import eliminacionRoutes from './routes/eliminacionRoutes.js';
 import calificacionRoutes from './routes/calificacionRoutes.js';
+import categoriaRoutes from './routes/categoriaRoutes.js'; // Nueva ruta de categorías
 
 dotenv.config();  // Cargar variables de entorno desde .env
 
@@ -29,6 +30,7 @@ app.use('/api/personalizaciones', personalizacionRoutes);
 app.use('/api/reportes', reporteRoutes);
 app.use('/api/eliminaciones', eliminacionRoutes);
 app.use('/api/calificaciones', calificacionRoutes);
+app.use('/api/categorias', categoriaRoutes); // Nueva ruta de categorías
 
 sequelize.sync()
   .then(() => {
@@ -39,3 +41,4 @@ sequelize.sync()
   .catch(err => {
     console.error('Unable to sync the database:', err);
   });
+

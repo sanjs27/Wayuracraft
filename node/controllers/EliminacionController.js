@@ -1,4 +1,4 @@
-import Eliminacion from '../models/Eliminacion.js';
+import Eliminacion from '../models/Eliminaciones.js';
 
 export const getEliminaciones = async (req, res) => {
   try {

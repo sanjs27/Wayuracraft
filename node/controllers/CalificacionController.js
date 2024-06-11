@@ -1,4 +1,4 @@
-import Calificacion from '../models/Calificacion.js';
+import Calificacion from '../models/Calificaciones.js';
 
 export const getCalificaciones = async (req, res) => {
   try {

@@ -1,0 +1,25 @@
+.productos-container {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .filter-options {
+    margin-bottom: 20px;
+  }
+  
+  .products-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .pagination {
+    margin-top: 20px;
+  }
+  
+  .pagination button {
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+  }
+  

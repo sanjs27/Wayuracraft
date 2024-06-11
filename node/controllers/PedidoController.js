@@ -1,5 +1,5 @@
-import Pedido from '../models/Pedido.js';
-import DetallePedido from '../models/DetallePedido.js';
+import Pedido from '../models/Pedidos.js';
+import DetallePedido from '../models/Detalle_Pedido.js';
 
 export const getPedidos = async (req, res) => {
   try {
