@@ -1,25 +1,58 @@
 .productos-container {
-    padding: 20px;
-    text-align: center;
-  }
-  
-  .filter-options {
-    margin-bottom: 20px;
-  }
-  
-  .products-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  
-  .pagination {
-    margin-top: 20px;
-  }
-  
-  .pagination button {
-    padding: 10px 20px;
-    margin: 5px;
-    cursor: pointer;
-  }
-  
+  padding: 20px;
+}
+
+.filter-options {
+  margin-bottom: 20px;
+  text-align: right;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.filter-options label {
+  margin-right: 10px;
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+.filter-options select {
+  padding: 5px 10px;
+  font-size: 1em;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filter-options select:hover {
+  border-color: #888;
+}
+
+.products-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.pagination {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.pagination button {
+  padding: 10px 20px;
+  margin: 5px;
+  cursor: pointer;
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.pagination button:hover {
+  background-color: #ddd;
+  border-color: #bbb;
+}

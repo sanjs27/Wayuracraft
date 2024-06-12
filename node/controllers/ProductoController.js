@@ -1,9 +1,26 @@
 import Producto from '../models/Productos.js';
+import { Sequelize } from 'sequelize';
 
-// Obtener todos los productos
+// Obtener todos los productos con paginación y filtrado
 export const getProductos = async (req, res) => {
   try {
-    const productos = await Producto.findAll();
+    const { sort = 'random', page = 1, limit = 20 } = req.query;
+    const offset = (page - 1) * limit;
+    let order = [];
+
+    if (sort === 'asc') {
+      order = [['precio', 'ASC']];
+    } else if (sort === 'desc') {
+      order = [['precio', 'DESC']];
+    } else if (sort === 'random') {
+      order = [Sequelize.literal('RAND()')];
+    }
+
+    const productos = await Producto.findAll({
+      order,
+      limit: parseInt(limit),
+      offset: parseInt(offset),
+    });
     res.status(200).json(productos);
   } catch (error) {
     res.status(500).json({ message: 'Error al obtener los productos', error });

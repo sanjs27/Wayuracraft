@@ -42,7 +42,6 @@ const Productos = () => {
 
   return (
     <div className="productos-container">
-      <h2>Productos</h2>
       <div className="filter-options">
         <label>Ordenar por precio: </label>
         <select onChange={handleSortChange} value={sortOrder}>
