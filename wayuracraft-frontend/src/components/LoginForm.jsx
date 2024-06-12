@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import api from '../services/api';
+import { toast } from 'react-toastify';
 
 const LoginForm = ({ onLogin }) => {
   const [email, setEmail] = useState('');
@@ -14,8 +15,16 @@ const LoginForm = ({ onLogin }) => {
       localStorage.setItem('token', response.data.token); // Guarda el token en localStorage
       onLogin(response.data.user); // Actualiza el estado de usuario en App.js
       navigate('/');
+      toast.success('Inicio de sesión exitoso'); // Notificación de éxito
     } catch (error) {
       console.error('Error logging in:', error);
+      if (error.response && error.response.status === 401) {
+        toast.error('Contraseña incorrecta'); // Notificación de contraseña incorrecta
+      } else if (error.response && error.response.status === 404) {
+        toast.error('Usuario no encontrado'); // Notificación de usuario no encontrado
+      } else {
+        toast.error('Error al iniciar sesión'); // Notificación de error general
+      }
     }
   };
 

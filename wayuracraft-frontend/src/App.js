@@ -7,6 +7,8 @@ import Register from './pages/Register';
 import Perfil from './pages/Perfil';
 import Productos from './pages/Productos';
 import api from './services/api';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -38,9 +40,10 @@ const App = () => {
         <Route path="/" element={<ContainerPrincipal />} />
         <Route path="/login" element={<Login onLogin={handleLogin} />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/perfil" element={<Perfil />} />
+        <Route path="/perfil" element={<Perfil user={user} />} />
         <Route path="/productos" element={<Productos />} />
       </Routes>
+      <ToastContainer />
     </>
   );
 };
