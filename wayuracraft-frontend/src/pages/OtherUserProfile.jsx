@@ -1,23 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import api from '../services/api';
 import ProductCard from '../components/ProductCard';
 import "../styles/Perfil.css";
 
-const Perfil = ({ user, onLogout }) => {
+const OtherUserProfile = () => {
   const { id } = useParams();
   const [profile, setProfile] = useState(null);
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    if (id) {
-      fetchProfile(id);
-      fetchProducts(id);
-    } else if (user) {
-      fetchProfile(user.id_usuario);
-      fetchProducts(user.id_usuario);
-    }
-  }, [id, user]);
+    fetchProfile(id);
+    fetchProducts(id);
+  }, [id]);
 
   const fetchProfile = async (userId) => {
     try {
@@ -48,22 +43,15 @@ const Perfil = ({ user, onLogout }) => {
         <p><strong>Nombre:</strong> {profile.nombre}</p>
         <p><strong>Correo:</strong> {profile.correo_electronico}</p>
         <p><strong>Celular:</strong> {profile.telefono}</p>
-        {id ? (
-          <button onClick={() => window.open(`https://wa.me/${profile.telefono}`, '_blank')}>
-            Comunícate por WhatsApp
-          </button>
-        ) : (
-          <>
-            <button onClick={onLogout}>Cerrar sesión</button>
-            <Link to="/agregar-producto"><button>Agregar Producto</button></Link>
-          </>
-        )}
+        <button onClick={() => window.open(`https://wa.me/${profile.telefono}`, '_blank')}>
+          Comunícate por WhatsApp
+        </button>
       </div>
       <div className="user-products">
         <h3>Productos del Usuario</h3>
         <div className="products-list">
           {products.map(product => (
-            <ProductCard key={product.id_producto} product={product} user={user} />
+            <ProductCard key={product.id_producto} product={product} />
           ))}
         </div>
       </div>
@@ -71,5 +59,4 @@ const Perfil = ({ user, onLogout }) => {
   );
 };
 
-export default Perfil;
-
+export default OtherUserProfile;

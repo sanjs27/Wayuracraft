@@ -1,7 +1,6 @@
 import { DataTypes } from 'sequelize';
 import sequelize from '../config/database.js';
 import User from './User.js';
-import Categoria from './Categorias.js';
 
 const Producto = sequelize.define('Producto', {
   id_producto: {
@@ -14,7 +13,8 @@ const Producto = sequelize.define('Producto', {
     allowNull: false
   },
   descripcion: {
-    type: DataTypes.TEXT
+    type: DataTypes.TEXT,
+    allowNull: false
   },
   precio: {
     type: DataTypes.DECIMAL(10, 2),
@@ -39,12 +39,14 @@ const Producto = sequelize.define('Producto', {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
-      model: Categoria,
+      model: 'Categorias',
       key: 'id_categoria'
     }
   }
 }, {
   tableName: 'Productos'
 });
+
+Producto.belongsTo(User, { foreignKey: 'artesano_id', as: 'User' });
 
 export default Producto;

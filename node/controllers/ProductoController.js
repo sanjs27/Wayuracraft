@@ -1,4 +1,5 @@
 import Producto from '../models/Productos.js';
+import User from '../models/User.js'; // Asegúrate de importar el modelo User
 import { Sequelize } from 'sequelize';
 
 // Obtener todos los productos con paginación y filtrado
@@ -31,7 +32,9 @@ export const getProductos = async (req, res) => {
 export const getProductoById = async (req, res) => {
   try {
     const { id } = req.params;
-    const producto = await Producto.findByPk(id);
+    const producto = await Producto.findByPk(id, {
+      include: [{ model: User, as: 'User', attributes: ['id_usuario', 'nombre'] }]
+    });
 
     if (!producto) {
       return res.status(404).json({ message: 'Producto no encontrado' });
@@ -39,7 +42,8 @@ export const getProductoById = async (req, res) => {
 
     res.status(200).json(producto);
   } catch (error) {
-    res.status(500).json({ message: 'Error al obtener el producto', error });
+    console.error('Error fetching product details:', error);
+    res.status(500).json({ message: 'Error al obtener el producto', error: error.message });
   }
 };
 

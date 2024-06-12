@@ -34,3 +34,15 @@ export const addProductoToCarrito = async (req, res) => {
     res.status(500).json({ message: 'Error al agregar producto al carrito', error });
   }
 };
+
+export const deleteProductoFromCarrito = async (req, res) => {
+  try {
+    const { detalle_id } = req.params;
+
+    await DetalleCarrito.destroy({ where: { id_detalle: detalle_id } });
+
+    res.status(200).json({ message: 'Producto eliminado del carrito' });
+  } catch (error) {
+    res.status(500).json({ message: 'Error al eliminar el producto del carrito', error });
+  }
+};
